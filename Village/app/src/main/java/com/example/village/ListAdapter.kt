@@ -32,6 +32,7 @@ class ListAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     init {  // searchList의 문서를 불러온 뒤 Person으로 변환해 ArrayList에 담음
+        firestore = FirebaseFirestore.getInstance()
         firestore?.collection("user-posts")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
             // ArrayList 비워줌
             searchList.clear()
@@ -114,6 +115,7 @@ class ListAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
     fun search(serachWord : String, option : String) {
+        firestore = FirebaseFirestore.getInstance()
         Log.d("search","#################")
         firestore?.collection("user-posts")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
             // ArrayList 비워줌
